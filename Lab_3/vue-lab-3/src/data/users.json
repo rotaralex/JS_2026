@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "gender": "female",
+    "name": { "title": "Mrs", "first": "Emma", "last": "Lampi" },
+    "location": {
+      "street": { "number": 2304, "name": "Siilitie" },
+      "city": "Hausjärvi",
+      "state": "Uusimaa",
+      "country": "Finland",
+      "postcode": 98555,
+      "timezone": { "offset": "+8:00", "description": "Beijing, Perth, Singapore, Hong Kong" }
+    },
+    "email": "emma.lampi@example.com",
+    "dob": { "date": "2001-03-08T01:39:19.084Z", "age": 25 },
+    "phone": "02-689-410",
+    "cell": "043-730-12-94",
+    "picture": "/users/user-1.jpg",
+    "hobbies": ["Travel", "Photography", "Hiking", "Reading", "Cooking", "Music"],
+    "details": "Passionate travel photographer and outdoor enthusiast based in Finland."
+  },
+  {
+    "id": 2,
+    "gender": "male",
+    "name": { "title": "Mr", "first": "Lucas", "last": "Muller" },
+    "location": {
+      "street": { "number": 12, "name": "Hauptstrasse" },
+      "city": "Berlin",
+      "state": "Berlin",
+      "country": "Germany",
+      "postcode": 10115,
+      "timezone": { "offset": "+1:00", "description": "Berlin, Paris" }
+    },
+    "email": "lucas.muller@example.com",
+    "dob": { "date": "2009-05-14T00:00:00.000Z", "age": 17 },
+    "phone": "030-123456",
+    "cell": "0170-9876543",
+    "picture": "/users/user-2.jpg",
+    "hobbies": ["Gaming", "Coding", "Skateboarding"],
+    "details": "Junior web developer who loves building mini-games."
+  },
+  {
+    "id": 3,
+    "gender": "male",
+    "name": { "title": "Mr", "first": "Oleksandr", "last": "Kovalenko" },
+    "location": {
+      "street": { "number": 45, "name": "Khreshchatyk" },
+      "city": "Kyiv",
+      "state": "Kyiv",
+      "country": "Ukraine",
+      "postcode": 1001,
+      "timezone": { "offset": "+2:00", "description": "Kyiv, Helsinki" }
+    },
+    "email": "o.kovalenko@example.com",
+    "dob": { "date": "1988-11-20T00:00:00.000Z", "age": 38 },
+    "phone": "044-222-33-44",
+    "cell": "067-111-22-33",
+    "picture": "/users/user-3.jpg",
+    "hobbies": ["Cycling", "Coffee", "Chess"],
+    "details": "Software architect and enthusiast of specialty coffee."
+  },
+  {
+    "id": 4,
+    "gender": "female",
+    "name": { "title": "Ms", "first": "Helena", "last": "Silva" },
+    "location": {
+      "street": { "number": 88, "name": "Rua das Flores" },
+      "city": "Porto",
+      "state": "Porto",
+      "country": "Portugal",
+      "postcode": 4050,
+      "timezone": { "offset": "+0:00", "description": "Lisbon, London" }
+    },
+    "email": "helena.silva@example.com",
+    "dob": { "date": "1968-02-10T00:00:00.000Z", "age": 58 },
+    "phone": "22-987-654",
+    "cell": "912-345-678",
+    "picture": "/users/user-4.jpg",
+    "hobbies": ["Gardening", "Painting", "Yoga"],
+    "details": "Botanist and botanical illustrator."
+  },
+  {
+    "id": 5,
+    "gender": "female",
+    "name": { "title": "Miss", "first": "Yuki", "last": "Tanaka" },
+    "location": {
+      "street": { "number": 501, "name": "Shibuya" },
+      "city": "Tokyo",
+      "state": "Tokyo",
+      "country": "Japan",
+      "postcode": 1500002,
+      "timezone": { "offset": "+9:00", "description": "Tokyo" }
+    },
+    "email": "yuki.tanaka@example.com",
+    "dob": { "date": "2002-09-12T00:00:00.000Z", "age": 24 },
+    "phone": "03-4567-8901",
+    "cell": "090-1234-5678",
+    "picture": "/users/user-5.jpg",
+    "hobbies": ["Anime", "Design", "Piano"],
+    "details": "UI/UX Designer who loves crafting interactive experiences."
+  },
+  {
+    "id": 6,
+    "gender": "male",
+    "name": { "title": "Mr", "first": "Arthur", "last": "Pendelton" },
+    "location": {
+      "street": { "number": 10, "name": "Baker St" },
+      "city": "London",
+      "state": "Greater London",
+      "country": "United Kingdom",
+      "postcode": "NW1 6XE",
+      "timezone": { "offset": "+0:00", "description": "London" }
+    },
+    "email": "arthur.p@example.com",
+    "dob": { "date": "1955-04-18T00:00:00.000Z", "age": 71 },
+    "phone": "020-7946-0919",
+    "cell": "07700-900821",
+    "picture": "/users/user-6.jpg",
+    "hobbies": ["History", "Writing", "Tea"],
+    "details": "Retired professor of British history."
+  },
+  {
+    "id": 7,
+    "gender": "male",
+    "name": { "title": "Mr", "first": "Mateo", "last": "Garcia" },
+    "location": {
+      "street": { "number": 74, "name": "Gran Via" },
+      "city": "Madrid",
+      "state": "Madrid",
+      "country": "Spain",
+      "postcode": 28013,
+      "timezone": { "offset": "+1:00", "description": "Madrid" }
+    },
+    "email": "mateo.garcia@example.com",
+    "dob": { "date": "2010-08-30T00:00:00.000Z", "age": 16 },
+    "phone": "91-555-1234",
+    "cell": "600-112-233",
+    "picture": "/users/user-7.jpg",
+    "hobbies": ["Football", "Swimming", "Drums"],
+    "details": "High school student and passionate football player."
+  },
+  {
+    "id": 8,
+    "gender": "female",
+    "name": { "title": "Mrs", "first": "Sophie", "last": "Dubois" },
+    "location": {
+      "street": { "number": 18, "name": "Rue de Rivoli" },
+      "city": "Paris",
+      "state": "Île-de-France",
+      "country": "France",
+      "postcode": 75001,
+      "timezone": { "offset": "+1:00", "description": "Paris" }
+    },
+    "email": "sophie.dubois@example.com",
+    "dob": { "date": "1994-06-25T00:00:00.000Z", "age": 32 },
+    "phone": "01-40-20-50-50",
+    "cell": "06-12-34-56-78",
+    "picture": "/users/user-8.jpg",
+    "hobbies": ["Baking", "Literature", "Running"],
+    "details": "Pastry chef exploring modern French desserts."
+  },
+  {
+    "id": 9,
+    "gender": "male",
+    "name": { "title": "Mr", "first": "Liam", "last": "O'Connor" },
+    "location": {
+      "street": { "number": 5, "name": "Grafton St" },
+      "city": "Dublin",
+      "state": "Leinster",
+      "country": "Ireland",
+      "postcode": "D02",
+      "timezone": { "offset": "+0:00", "description": "Dublin" }
+    },
+    "email": "liam.oconnor@example.com",
+    "dob": { "date": "1979-12-05T00:00:00.000Z", "age": 47 },
+    "phone": "01-496-0123",
+    "cell": "085-555-4321",
+    "picture": "/users/user-9.jpg",
+    "hobbies": ["Guitar", "Woodworking", "Hiking"],
+    "details": "Acoustic musician and craftsman."
+  },
+  {
+    "id": 10,
+    "gender": "female",
+    "name": { "title": "Dr", "first": "Elena", "last": "Rostova" },
+    "location": {
+      "street": { "number": 99, "name": "Poltavska" },
+      "city": "Lviv",
+      "state": "Lviv Oblast",
+      "country": "Ukraine",
+      "postcode": 79000,
+      "timezone": { "offset": "+2:00", "description": "Kyiv" }
+    },
+    "email": "elena.rostova@example.com",
+    "dob": { "date": "2000-01-15T00:00:00.000Z", "age": 26 },
+    "phone": "032-234-56-78",
+    "cell": "050-987-65-43",
+    "picture": "/users/user-10.jpg",
+    "hobbies": ["Biology", "Volunteering", "Sci-Fi"],
+    "details": "Researcher in biomedical engineering."
+  }
+]
