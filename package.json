@@ -4,5 +4,11 @@
   "devDependencies": {
     "@types/node": "^20.0.0",
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "pinia": "^4.1.0",
+    "vee-validate": "^4.15.1",
+    "vue-router": "^5.4.0",
+    "yup": "^1.7.1"
   }
 }
