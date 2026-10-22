@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ServiceProvider } from '@/services/service-provider'
-import type { User } from '@/types/user'
+import type { User } from '@/entities/user/model/user'
 
 const props = defineProps<{ id: string }>()
 const router = useRouter()

@@ -2,7 +2,7 @@
 import { ref, watch, onMounted } from 'vue'
 import { useRoute, useRouter, RouterView, RouterLink } from 'vue-router'
 import { ServiceProvider } from '@/services/service-provider'
-import type { User } from '@/types/user'
+import type { User } from '@/entities/user/model/user'
 
 const route = useRoute()
 const router = useRouter()

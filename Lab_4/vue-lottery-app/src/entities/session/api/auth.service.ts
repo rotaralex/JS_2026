@@ -1,6 +1,6 @@
-import { http } from '@/api/http-client'
+import { http } from '@/shared/api/http-client'
 import type { LoginResponse } from '@/types/auth'
-import type { User } from '@/types/user'
+import type { User } from '@/entities/user/model/user'
 
 export class AuthService {
   login(username: string, password: string): Promise<LoginResponse> {
