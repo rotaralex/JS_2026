@@ -12,6 +12,10 @@ defineProps<{
 <template>
   <DataTable :value="value" :loading="loading" stripedRows responsiveLayout="scroll">
     <Column v-for="col in columns" :key="col.field" :field="col.field" :header="col.header" />
-    <slot name="actions" />
+    <Column header="Дії">
+      <template #body="slotProps">
+        <slot name="actions" :data="slotProps.data" />
+      </template>
+    </Column>
   </DataTable>
 </template>
