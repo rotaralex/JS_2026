@@ -2,8 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { ServiceProvider } from '@/shared/api'
 import type { AuthService } from '../api/auth.service'
-import type { User } from '@/entities/user'
-
+import type { User } from '@/shared/model'
 export const useSessionStore = defineStore(
   'session',
   () => {

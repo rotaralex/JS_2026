@@ -6,9 +6,9 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
 
-import App from './App.vue'
-import router from './app/providers/router'
-import { registerServices } from './app/providers/services'
+import App from './app/App.vue'
+import router from './app/router'
+import { registerServices } from './app/init'
 
 registerServices()
 

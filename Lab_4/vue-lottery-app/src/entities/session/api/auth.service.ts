@@ -1,6 +1,17 @@
-import { http } from '@/shared/api/http-client'
-import type { LoginResponse } from '@/types/auth'
-import type { User } from '@/entities/user/model/user'
+import { http } from '@/shared/api'
+import type { User } from '@/shared/model'
+
+export interface LoginResponse {
+  id: number
+  username: string
+  email: string
+  firstName: string
+  lastName: string
+  gender: string
+  image: string
+  accessToken: string
+  refreshToken: string
+}
 
 export class AuthService {
   login(username: string, password: string): Promise<LoginResponse> {

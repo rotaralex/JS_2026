@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { ServiceProvider } from '@/services/service-provider'
-import type { User } from '@/entities/user/model/user'
+import { ServiceProvider } from '@/shared/api'
+import type { UserService, User } from '@/entities/user'
 
 const props = defineProps<{ id: string }>()
 const router = useRouter()
@@ -10,9 +10,11 @@ const router = useRouter()
 const user = ref<User | null>(null)
 const isLoading = ref(true)
 
+const userService = ServiceProvider.get<UserService>('users')
+
 onMounted(async () => {
   try {
-    user.value = await ServiceProvider.users.getById(Number(props.id))
+    user.value = await userService.getById(Number(props.id))
   } catch (e) {
     alert((e as Error).message)
   } finally {
@@ -26,42 +28,14 @@ const close = () => router.push('/users')
 <template>
   <div class="modal-backdrop" @click.self="close">
     <div class="modal-card">
-      <div v-if="isLoading">Загрузка профиля...</div>
+      <div v-if="isLoading">Завантаження...</div>
       <div v-else-if="user">
-        <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+        <h2>Деталі користувача</h2>
+        <p><strong>ID:</strong> {{ user.id }}</p>
+        <p><strong>Ім'я:</strong> {{ user.firstName }} {{ user.lastName }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>Username:</strong> {{ user.username }}</p>
-        <p><strong>Возраст:</strong> {{ user.age }}</p>
-        <p><strong>Пол:</strong> {{ user.gender }}</p>
-        <p><strong>Телефон:</strong> {{ user.phone }}</p>
+        <button @click="close">Закрити</button>
       </div>
-      <button class="btn-close" @click="close">Закрыть</button>
     </div>
   </div>
 </template>
-
-<style scoped lang="scss">
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.modal-card {
-  background: white;
-  padding: 24px;
-  border-radius: 8px;
-  width: 350px;
-}
-.btn-close {
-  margin-top: 16px;
-  width: 100%;
-  padding: 8px;
-  background: #64748b;
-  color: white;
-  border: none;
-  border-radius: 4px;
-}
-</style>
