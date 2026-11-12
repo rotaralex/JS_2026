@@ -1,34 +1,47 @@
 import { useState, type FormEvent } from 'react'
 import type { Priority, Task } from '../types/task'
+import { useTaskContext } from '../hooks/useTaskContext'
 
-interface TaskFormProps {
-  onAddTask: (task: Omit<Task, 'id' | 'completed'>) => void
+interface InnerFormProps {
+  editingTask: Task | null
+  onAdd: (task: Omit<Task, 'id' | 'completed'>) => void
+  onUpdate: (task: Omit<Task, 'completed' | 'isDeleting'>) => void
+  onCancelEdit: () => void
 }
 
-export default function TaskForm({ onAddTask }: TaskFormProps) {
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [category, setCategory] = useState('React')
-  const [priority, setPriority] = useState<Priority>('medium')
+function InnerTaskForm({ editingTask, onAdd, onUpdate, onCancelEdit }: InnerFormProps) {
+  const [title, setTitle] = useState(editingTask?.title ?? '')
+  const [description, setDescription] = useState(editingTask?.description ?? '')
+  const [category, setCategory] = useState(editingTask?.category ?? 'React')
+  const [priority, setPriority] = useState<Priority>(editingTask?.priority ?? 'medium')
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     if (!title.trim()) return
 
-    onAddTask({
-      title: title.trim(),
-      description: description.trim(),
-      category: category.trim(),
-      priority,
-    })
-
-    setTitle('')
-    setDescription('')
+    if (editingTask) {
+      onUpdate({
+        id: editingTask.id,
+        title: title.trim(),
+        description: description.trim(),
+        category: category.trim() || 'Загальне',
+        priority,
+      })
+    } else {
+      onAdd({
+        title: title.trim(),
+        description: description.trim(),
+        category: category.trim() || 'Загальне',
+        priority,
+      })
+      setTitle('')
+      setDescription('')
+    }
   }
 
   return (
     <form className="task-form" onSubmit={handleSubmit}>
-      <h3>Додати нове завдання</h3>
+      <h3>{editingTask ? 'Редагувати завдання' : 'Додати нове завдання'}</h3>
       <input
         type="text"
         placeholder="Назва завдання *"
@@ -57,7 +70,34 @@ export default function TaskForm({ onAddTask }: TaskFormProps) {
           <option value="high">Високий</option>
         </select>
       </div>
-      <button type="submit">Додати завдання</button>
+      <div className="form-actions">
+        <button type="submit">
+          {editingTask ? 'Зберегти зміни' : 'Додати завдання'}
+        </button>
+        {editingTask && (
+          <button
+            type="button"
+            className="cancel-edit-btn"
+            onClick={onCancelEdit}
+          >
+            Скасувати
+          </button>
+        )}
+      </div>
     </form>
+  )
+}
+
+export default function TaskForm() {
+  const { addTask, updateTask, editingTask, setEditingTask } = useTaskContext()
+
+  return (
+    <InnerTaskForm
+      key={editingTask?.id ?? 'new'}
+      editingTask={editingTask}
+      onAdd={addTask}
+      onUpdate={updateTask}
+      onCancelEdit={() => setEditingTask(null)}
+    />
   )
 }

@@ -1,10 +1,13 @@
-interface TaskStatsProps {
-  total: number
-  completed: number
-  pending: number
-}
+import { useTaskContext } from '../hooks/useTaskContext'
 
-export default function TaskStats({ total, completed, pending }: TaskStatsProps) {
+export default function TaskStats() {
+  const { tasks } = useTaskContext()
+
+  const activeTasks = tasks.filter((t) => !t.isDeleting)
+  const total = activeTasks.length
+  const completed = activeTasks.filter((t) => t.completed).length
+  const pending = total - completed
+
   return (
     <div className="stats">
       <div className="stat-card">
