@@ -1,7 +1,7 @@
 import { useTaskContext } from '../hooks/useTaskContext'
 
 export default function Toast() {
-  const { toast, undoDelete, dismissToast } = useTaskContext()
+  const { toast, dismissToast } = useTaskContext()
 
   if (!toast) return null
 
@@ -9,18 +9,10 @@ export default function Toast() {
     <div className={`toast toast-${toast.type}`} key={toast.id}>
       <div className="toast-content">
         <span>{toast.text}</span>
-        <div className="toast-actions">
-          {toast.isUndoable && (
-            <button className="toast-undo-btn" onClick={undoDelete}>
-              Скасувати (Undo)
-            </button>
-          )}
-          <button className="toast-close-btn" onClick={dismissToast} aria-label="Закрити">
-            ✕
-          </button>
-        </div>
+        <button className="toast-close-btn" onClick={dismissToast} aria-label="Закрити">
+          ✕
+        </button>
       </div>
-      {toast.isUndoable && <div className="toast-progress" />}
     </div>
   )
 }

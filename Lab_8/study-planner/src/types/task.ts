@@ -7,7 +7,21 @@ export interface Task {
   completed: boolean
   priority: Priority
   category: string
-  isDeleting?: boolean
+}
+
+// Типи для DummyJSON API
+export interface ApiTodo {
+  id: number
+  todo: string
+  completed: boolean
+  userId: number
+}
+
+export interface TodosResponse {
+  todos: ApiTodo[]
+  total: number
+  skip: number
+  limit: number
 }
 
 export type FilterStatus = 'all' | 'completed' | 'pending'
@@ -15,7 +29,6 @@ export type FilterStatus = 'all' | 'completed' | 'pending'
 export interface ToastMessage {
   id: number
   text: string
-  type: 'success' | 'info' | 'warning'
-  isUndoable?: boolean
+  type: 'success' | 'info' | 'warning' | 'error'
   duration?: number
 }

@@ -4,8 +4,8 @@ import { useTaskContext } from '../hooks/useTaskContext'
 
 interface InnerFormProps {
   editingTask: Task | null
-  onAdd: (task: Omit<Task, 'id' | 'completed'>) => void
-  onUpdate: (task: Omit<Task, 'completed' | 'isDeleting'>) => void
+  onAdd: (task: Omit<Task, 'id' | 'completed'>) => Promise<void>
+  onUpdate: (task: Omit<Task, 'completed'>) => Promise<void>
   onCancelEdit: () => void
 }
 
@@ -14,28 +14,34 @@ function InnerTaskForm({ editingTask, onAdd, onUpdate, onCancelEdit }: InnerForm
   const [description, setDescription] = useState(editingTask?.description ?? '')
   const [category, setCategory] = useState(editingTask?.category ?? 'React')
   const [priority, setPriority] = useState<Priority>(editingTask?.priority ?? 'medium')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    if (!title.trim()) return
+    if (!title.trim() || isSubmitting) return
 
-    if (editingTask) {
-      onUpdate({
-        id: editingTask.id,
-        title: title.trim(),
-        description: description.trim(),
-        category: category.trim() || 'Загальне',
-        priority,
-      })
-    } else {
-      onAdd({
-        title: title.trim(),
-        description: description.trim(),
-        category: category.trim() || 'Загальне',
-        priority,
-      })
-      setTitle('')
-      setDescription('')
+    setIsSubmitting(true)
+    try {
+      if (editingTask) {
+        await onUpdate({
+          id: editingTask.id,
+          title: title.trim(),
+          description: description.trim(),
+          category: category.trim() || 'General',
+          priority,
+        })
+      } else {
+        await onAdd({
+          title: title.trim(),
+          description: description.trim(),
+          category: category.trim() || 'General',
+          priority,
+        })
+        setTitle('')
+        setDescription('')
+      }
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -47,12 +53,14 @@ function InnerTaskForm({ editingTask, onAdd, onUpdate, onCancelEdit }: InnerForm
         placeholder="Назва завдання *"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        disabled={isSubmitting}
         required
       />
       <textarea
         placeholder="Короткий опис"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        disabled={isSubmitting}
       />
       <div className="form-row">
         <input
@@ -60,10 +68,12 @@ function InnerTaskForm({ editingTask, onAdd, onUpdate, onCancelEdit }: InnerForm
           placeholder="Категорія"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
+          disabled={isSubmitting}
         />
         <select
           value={priority}
           onChange={(e) => setPriority(e.target.value as Priority)}
+          disabled={isSubmitting}
         >
           <option value="low">Низький</option>
           <option value="medium">Середній</option>
@@ -71,13 +81,18 @@ function InnerTaskForm({ editingTask, onAdd, onUpdate, onCancelEdit }: InnerForm
         </select>
       </div>
       <div className="form-actions">
-        <button type="submit">
-          {editingTask ? 'Зберегти зміни' : 'Додати завдання'}
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting
+            ? 'Збереження...'
+            : editingTask
+              ? 'Зберегти зміни'
+              : 'Додати завдання'}
         </button>
         {editingTask && (
           <button
             type="button"
             className="cancel-edit-btn"
+            disabled={isSubmitting}
             onClick={onCancelEdit}
           >
             Скасувати
